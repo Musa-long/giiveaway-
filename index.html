@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DCX MEGA GIVEAWAY - Earn $0.15 Daily</title>
+
+<!-- THIS MAKES LOGO SHOW ON WHATSAPP -->
+<meta property="og:title" content="DCX MEGA GIVEAWAY - 50-200 USDT + 1M DCX">
+<meta property="og:description" content="Earn $0.05 per Ad, $0.15 Daily. Partners: Binance • Bybit • Coinbase. Join now!">
+<meta property="og:image" content="https://dco-lhpp.onrender.com/preview.jpg">
+<meta property="og:url" content="https://dco-lhpp.onrender.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dco-lhpp.onrender.com/preview.jpg">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#050814;color:#fff}
+.box{max-width:440px;margin:auto;padding:15px}
+.card{background:#12172a;border:1px solid #222;border-radius:16px;padding:16px;margin:12px 0}
+.btn{width:100%;padding:15px;border-radius:14px;border:none;font-weight:bold;margin:6px 0;display:block;text-align:center;text-decoration:none;transition:0.3s}
+.btn-green{background:#00ff88;color:#000}
+.btn-wa{background:#25D366;color:#fff}
+.btn-locked{background:#222!important;color:#555!important;pointer-events:none}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.small{font-size:11px;opacity:0.5}
+.banner{width:100%;border-radius:14px;border:1px solid #222}
+</style>
+</head>
+<body>
+<div class="box">
+
+<img src="preview.jpg" class="banner" alt="DCX Giveaway">
+
+<div class="card" style="text-align:center;background:linear-gradient(135deg,#00ff88,#00d4ff);color:#000">
+<div style="font-size:28px;font-weight:900">50-200 USDT + 1M DCX</div>
+<div style="font-size:12px">Earn $0.05 Per Ad | $0.15 Daily | 1000 DCX = $1</div>
+</div>
+
+<div class="card" style="border:2px solid #25D366">
+<b>📲 Step 1: Share to 20 WhatsApp to Unlock Earn Now Button</b>
+<div class="grid" id="waGrid"></div>
+<div style="background:#111;height:12px;border-radius:10px;margin:12px 0"><div id="pbar" style="height:12px;background:#25D366;width:0%;border-radius:10px"></div></div>
+<div id="pcount" style="text-align:center;font-weight:bold">0 / 20 Shares</div>
+<div id="unlockMsg" style="display:none;text-align:center;color:#00ff88;font-weight:bold">✅ Unlocked!</div>
+</div>
+
+<div class="card" style="text-align:center">
+<b>🏆 Step 2: Earn Now</b>
+<p class="small">Your website will be the Earn Now button after 20 shares</p>
+<a id="earnBtn" class="btn btn-locked" href="#">🔒 Earn Now - $0.15/day (0/20)</a>
+<p class="small">dco-lhpp.onrender.com • 1000 DCX = $1.00</p>
+</div>
+
+</div>
+
+<script>
+let shares=parseInt(localStorage.getItem('wa_shares')||'0');
+function update(){
+document.getElementById('pcount').innerText=shares+' / 20 Shares';
+document.getElementById('pbar').style.width=(shares/20*100)+'%';
+let btn=document.getElementById('earnBtn');
+if(shares>=20){
+btn.className='btn btn-green';
+btn.href='https://dco-lhpp.onrender.com';
+btn.innerText='🚀 Earn Now - Start $0.15/day →';
+document.getElementById('unlockMsg').style.display='block';
+}else{
+btn.innerText='🔒 Earn Now - $0.15/day ('+shares+'/20)';
+}
+}
+function share(i){
+let text=encodeURIComponent("🚀 Join DCX Mega Giveaway! 50-200 USDT + 1M DCX Pool. Earn $0.05 per Ad, $0.15 Daily. Partners: Binance • Bybit • Coinbase. Official link: https://dco-lhpp.onrender.com");
+window.open("https://wa.me/?text="+text,'_blank');
+if(!localStorage.getItem('wa_done_'+i)){
+localStorage.setItem('wa_done_'+i,'1');
+shares++;localStorage.setItem('wa_shares',shares);update();
+if(shares>=20)alert('✅ 20 Shares Done! Earn Now Button Unlocked!');
+}
+}
+let grid=document.getElementById('waGrid');
+for(let i=1;i<=20;i++){
+let b=document.createElement('button');b.className='btn btn-wa';b.innerText='WhatsApp '+i+' 📲';
+if(localStorage.getItem('wa_done_'+i)){b.style.opacity='0.4';b.innerText='✓ Shared '+i;}
+b.onclick=()=>share(i);grid.appendChild(b);
+}
+update();
+</script>
+</body>
+</html>
