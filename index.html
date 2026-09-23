@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DCX - Official Giveaway</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial}
+body{background:#050814;color:#fff}
+.hero{background:radial-gradient(600px at 50% -20%,#00ff88 0%,transparent 60%),#070a14;padding:25px 18px;text-align:center}
+.box{max-width:440px;margin:auto}
+.badge{background:#00ff8820;border:1px solid #00ff88;color:#00ff88;padding:6px 14px;border-radius:20px;font-size:11px;display:inline-block;margin:8px}
+.card{background:#12172a;border:1px solid #222;border-radius:18px;padding:18px;margin:12px 0}
+.btn{width:100%;padding:15px;border-radius:14px;border:none;font-weight:bold;cursor:pointer;margin:6px 0;display:block;text-align:center;text-decoration:none}
+.btn-green{background:#00ff88;color:#000}
+.btn-dark{background:#1a2340;color:#fff;border:1px solid #2a355a}
+.btn-wa{background:#25D366;color:#fff}
+.input{width:100%;padding:13px;border-radius:12px;border:1px solid #333;background:#0c1020;color:#fff;margin:6px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.partner-img{width:100%;border-radius:12px;border:1px solid #222;margin-top:10px}
+.small{font-size:11px;opacity:0.5}
+</style>
+</head>
+<body>
+<div class="hero">
+<div class="box">
+<div class="badge">✅ VERIFIED PARTNERS: BINANCE • BYBIT • COINBASE</div>
+<h1 style="font-size:34px;margin:10px 0">DCX <span style="color:#00ff88">MEGA GIVEAWAY</span></h1>
+<p style="opacity:0.8">Join the fastest growing Web3 community. Earn DCX rewards daily by supporting our partners.</p>
+<div class="card" style="background:linear-gradient(135deg,#00ff88,#00d4ff);color:#000;text-align:center">
+<div style="font-size:12px;letter-spacing:2px">GIVEAWAY POOL</div>
+<div style="font-size:38px;font-weight:900">50 - 200 USDT</div>
+<div style="font-size:12px">+ 1,000,000 DCX Tokens • 100 Winners</div>
+</div>
+</div>
+</div>
+
+<div class="box" style="padding:0 15px">
+
+<div class="card">
+<h3>🎁 How To Participate</h3>
+<p class="small" style="margin:8px 0;line-height:1.5">1. Connect your BEP20 wallet on our official earning site<br>2. Earn at least 150 DCX today (watch 3 ads)<br>3. Share to 20 WhatsApp groups/friends to qualify for the lottery<br>4. Top referrers split the 50-200 USDT pool</p>
+<a href="https://dco-lhpp.onrender.com" class="btn btn-green">🚀 Go To Official Earning Site →</a>
+<p class="small" style="text-align:center;margin-top:6px">Official site: dco-lhpp.onrender.com • BSC Network</p>
+</div>
+
+<div class="card" style="text-align:center">
+<b>🤝 Our Partners</b>
+<img src="partners.png" class="partner-img" alt="Partners">
+<p class="small" style="margin-top:8px">DCX is building with top exchanges. Listing coming soon.</p>
+</div>
+
+<div class="card">
+<b>🔗 Step 1: Secure Wallet Connect (BEP20 Only)</b>
+<input id="wallet" placeholder="Paste your BEP20 Address 0x..." >
+<button class="btn btn-dark" onclick="saveW()">Connect Wallet & Join Giveaway</button>
+<div id="ok" style="display:none;color:#00ff88;font-size:12px;margin-top:8px">✓ Wallet saved! Now go to earning site and share.</div>
+<p class="small">We never ask for private keys or seed phrase. Only public 0x address for DCX distribution. Winners announced on site.</p>
+</div>
+
+<div class="card">
+<b>📲 Step 2: Share to 20 WhatsApp to Qualify</b>
+<p class="small" style="margin:6px 0">You must share 20 times to be eligible for the USDT lottery. Click below 20 times:</p>
+<div class="grid" id="waGrid"></div>
+<div style="background:#111a2f;height:10px;border-radius:10px;margin:12px 0"><div id="pbar" style="height:10px;background:#25D366;width:0%;border-radius:10px;transition:0.3s"></div></div>
+<div id="pcount" style="text-align:center;font-size:13px">0 / 20 Shares Done</div>
+</div>
+
+<div class="card" style="text-align:center;border:1px dashed #00ff88">
+<b>🏆 Final Step</b><br>
+<a href="https://dco-lhpp.onrender.com" class="btn btn-green" style="margin-top:10px">Start Earning DCX Now →</a>
+<p class="small" style="margin-top:8px">*Giveaway is a lottery for active users, not guaranteed income. Terms: Must earn 150 DCX + 20 shares. Winners picked weekly.</p>
+</div>
+
+<p class="small" style="text-align:center;padding:20px">© 2026 DCX • Not affiliated with Binance/Bybit/Coinbase, partners are for listing goals.<br>No financial advice. Play responsibly.</p>
+
+</div>
+<script>
+let shares = parseInt(localStorage.getItem('wa_shares')||'0');
+function saveW(){
+let w=document.getElementById('wallet').value.trim();
+if(!w.startsWith('0x')||w.length<20){alert('Enter valid BEP20 wallet 0x address');return}
+localStorage.setItem('dcx_giveaway_wallet',w);
+document.getElementById('ok').style.display='block';
+}
+function doShare(n){
+let text = encodeURIComponent("🚀 Join DCX Mega Giveaway! 50-200 USDT + 1M DCX Pool. Partners: Binance • Bybit • Coinbase. Official link: https://dco-lhpp.onrender.com - Earn daily by watching ads!");
+let url = "https://wa.me/?text="+text;
+window.open(url,'_blank');
+shares++; localStorage.setItem('wa_shares',shares); updateShares();
+if(shares>=20){alert("Amazing! 20 shares done. You qualified! Now go earn 150 DCX on the official site.")}
+}
+function updateShares(){
+document.getElementById('pcount').innerText=shares+" / 20 Shares Done";
+document.getElementById('pbar').style.width=Math.min(shares/20*100,100)+"%";
+}
+let grid=document.getElementById('waGrid');
+for(let i=1;i<=20;i++){
+let b=document.createElement('button');
+b.className='btn btn-wa';
+b.innerText='WhatsApp '+i+' 📲';
+b.onclick=()=>doShare(i);
+grid.appendChild(b);
+}
+updateShares();
+document.getElementById('wallet').value=localStorage.getItem('dcx_giveaway_wallet')||'';
+</script>
+</body>
+</html>
